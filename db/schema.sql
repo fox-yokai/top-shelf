@@ -9,4 +9,17 @@ CREATE TABLE IF NOT EXISTS `Users` (
 `password` VARCHAR(255) NOT NULL, 
 `createdAt` DATETIME NOT NULL, 
 `updatedAt` DATETIME NOT NULL, 
-PRIMARY KEY (`id`)
+PRIMARY KEY (`id`))
+
+CREATE TABLE IF NOT EXISTS `Wines` (
+`id` INTEGER NOT NULL auto_increment , 
+`name` VARCHAR(255) NOT NULL, 
+`variety` VARCHAR(255) NOT NULL, 
+`location` VARCHAR(255), 
+`Color` VARCHAR(255) NOT NULL, 
+`winery` VARCHAR(255), 
+`year` INTEGER, 
+`numBottles` INTEGER, 
+`createdAt` DATETIME NOT NULL, 
+`updatedAt` DATETIME NOT NULL, 
+PRIMARY KEY (`id`))
