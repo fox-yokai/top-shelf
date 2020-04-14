@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
         location: {
             type: DataTypes.STRING
         },
-        Color: {
+        color: {
             type: DataTypes.STRING,
             allowNull: false
         },
