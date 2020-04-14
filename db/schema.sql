@@ -23,3 +23,20 @@ CREATE TABLE IF NOT EXISTS `Wines` (
 `createdAt` DATETIME NOT NULL, 
 `updatedAt` DATETIME NOT NULL, 
 PRIMARY KEY (`id`))
+
+ CREATE TABLE IF NOT EXISTS `Notes` (
+`id` INTEGER NOT NULL auto_increment , 
+`note` VARCHAR(255) NOT NULL, 
+`wine_id` VARCHAR(255), 
+`createdAt` DATETIME NOT NULL, 
+`updatedAt` DATETIME NOT NULL, 
+PRIMARY KEY (`id`))
+
+`Rating_reviews` (
+`id` INTEGER NOT NULL auto_increment , 
+`rating` INTEGER NOT NULL, 
+`review` VARCHAR(255), 
+`wine_id` INTEGER, 
+`createdAt` DATETIME NOT NULL, 
+`updatedAt` DATETIME NOT NULL, 
+PRIMARY KEY (`id`))
