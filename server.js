@@ -10,6 +10,7 @@ app.use(express.static("public"));
 
 app.use(require("./controllers/rating_reviewController"))
 app.use(require("./controllers/winesController"))
+app.use(require("./controllers/usersController"))
 
 db.sequelize.sync().then(function () {
     app.listen(PORT, function () {
