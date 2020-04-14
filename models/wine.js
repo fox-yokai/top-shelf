@@ -25,6 +25,19 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER
         }
     });
+
+    Wine.associate = function(models){
+        Wine.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        })
+        Wine.hasMany(models.Note, {
+            onDelete: "cascade"
+        })
+        Wine.hasMany(models.Rating_review)
+    }
+
     
     return Wine;
   };
