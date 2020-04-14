@@ -12,5 +12,15 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
+
+    Rating_review.associate = function (models) {
+        Rating_review.belongsTo(models.Wine, {
+            foriegnKey: {
+                allowNull: false
+            }
+        })
+    };
+
+
     return Rating_review;
 };
