@@ -13,6 +13,16 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   });
+
+  User.associate = function(models){
+      User.hasMany(models.Wine, {
+          onDelete: "cascade"
+      })
+      User.hasMany(models.Note, {
+            onDelete: "cascade"
+      })
+      User.hasMany(models.Rating_review)
+  }
   
   return User;
 };
