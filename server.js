@@ -8,6 +8,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
+app.use(require("./controllers/winesController"))
+
 db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
         console.log("Listening on port %s", PORT);
