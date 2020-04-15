@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var Wine = sequelize.define("Wine", {
         name: {
             type: DataTypes.STRING,
@@ -26,14 +26,14 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    Wine.associate = function(models){
+    Wine.associate = function (models) {
         Wine.belongsTo(models.User),
-        Wine.hasMany(models.Note, {
-            onDelete: "cascade"
-        })
-        Wine.hasMany(models.Rating_review)
+            Wine.hasMany(models.Note, {
+                onDelete: "cascade"
+            }),
+            Wine.hasMany(models.Rating_review)
     }
 
-    
+
     return Wine;
-  };
+};
