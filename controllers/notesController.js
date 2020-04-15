@@ -11,7 +11,7 @@ router.get('/api/notes', (req, res) => {
 });
 
 // Get route for retrieving a single note
-router.get("/api/notes/:id", function (req, res) {
+router.get("/api/note/:id", function (req, res) {
   // Add sequelize code to find a single post where the id is equal to req.params.id,
   // return the result to the user with res.json
   db.Note.findOne({
@@ -32,7 +32,7 @@ router.post("/api/note", function (req, res) {
     .catch(error => res.status(500).json(error))
 });
 
-router.delete('/api/notes/:id', (req, res) => {
+router.delete('/api/note/:id', (req, res) => {
   db.Note.destroy({
     where: {
       id: req.params.id
@@ -43,7 +43,7 @@ router.delete('/api/notes/:id', (req, res) => {
 });
 
 // PUT route for updating a note
-router.put("/api/notes", function (req, res) {
+router.put("/api/note", function (req, res) {
   // Add code here to update a post using the values in req.body, where the id is equal to
   // req.body.id and return the result to the user using res.json
   db.Note.update(req.body,
