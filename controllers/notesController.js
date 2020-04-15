@@ -24,13 +24,10 @@ router.get("/api/notes/:id", function (req, res) {
 });
 
 // POST route for saving a new note
-router.post("/api/notes", function (req, res) {
+router.post("/api/note", function (req, res) {
   // Add sequelize code for creating a rating_review using req.body,
   // then return the result using res.json
-  db.Note.create({
-    rating: req.body.rating,
-    review: req.body.body,
-  })
+  db.Note.create(req.body)
     .then(results => res.json(results))
     .catch(error => res.status(500).json(error))
 });
