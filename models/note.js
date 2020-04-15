@@ -5,8 +5,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        user_id: {
+            type: DataTypes.INTEGER,
+        },
         wine_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
         }
     });
 
