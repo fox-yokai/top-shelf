@@ -30,7 +30,7 @@ router.get("/api/rating_reviews", function (req, res) {
 router.get("/api/rating_review/:id", function (req, res) {
     // Add sequelize code to find a single post where the id is equal to req.params.id,
     // return the result to the user with res.json
-    db.Post.findOne({
+    db.Rating_review.findOne({
         where: {
             id: req.params.id
         }
@@ -40,10 +40,10 @@ router.get("/api/rating_review/:id", function (req, res) {
 });
 
 // Get route for returning user rating_review for a specific wine
-router.get("/api/rating_reviews/wine_id/:wine_id", function (req, res) {
+router.get("/api/rating_review/WineID/:WineId", function (req, res) {
     // Add sequelize code to find all posts where the category is equal to req.params.category,
     // return the result to the user with res.json
-    db.Post.findAll({
+    db.Rating_review.findAll({
         where: {
             wine_id: req.params.wine_id
         }
