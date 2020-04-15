@@ -6,19 +6,12 @@ module.exports = function (sequelize, DataTypes) {
         },
         review: {
             type: DataTypes.STRING,
-        },
-        wine_id: {
-            type: DataTypes.INTEGER,
         }
     });
 
 
     Rating_review.associate = function (models) {
-        Rating_review.belongsTo(models.Wine, {
-            foriegnKey: {
-                allowNull: false
-            }
-        })
+        Rating_review.belongsTo(models.Wine)
     };
 
 

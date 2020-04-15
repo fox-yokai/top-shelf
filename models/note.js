@@ -4,21 +4,11 @@ module.exports = function (sequelize, DataTypes) {
         note: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-        },
-        wine_id: {
-            type: DataTypes.INTEGER,
         }
     });
 
     Note.associate = function (models) {
-        Note.belongsTo(models.Wine, {
-            foriegnKey: {
-                allowNull: false
-            }
-        })
+        Note.belongsTo(models.Wine)
     };
 
     return Note;
