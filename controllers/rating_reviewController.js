@@ -58,12 +58,9 @@ router.get("/api/rating_reviews/wine_id/:wine_id", function (req, res) {
 router.post("/api/rating_reviews", function (req, res) {
     // Add sequelize code for creating a rating_review using req.body,
     // then return the result using res.json
-    db.Rating_review.create({
-        rating: req.body.rating,
-        review: req.body.body,
-    }).then(function (dbRating_review) {
-        res.json(dbRating_review);
-    });
+    db.Rating_review.create(req.body)
+        .then((response) => res.status(200).json(response))
+        .catch(error => res.status(500).json(error))
 });
 
 // DELETE route for deleting rating_reviews
@@ -96,3 +93,11 @@ router.put("/api/rating_reviews", function (req, res) {
 });
 
 module.exports = router;
+
+// db.Rating_review.create({
+//     rating: req.body.rating,
+//     review: req.body.review,
+//     wine_id: req.body.wine_id
+// }).then(function (dbRating_review) {
+//     res.json(dbRating_review);
+// });
