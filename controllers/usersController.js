@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const passport = require("../config/passport");
 
 router.get("/api/user/:id", (req, res) => {
     db.User.findAll({
@@ -12,6 +13,16 @@ router.get("/api/user/:id", (req, res) => {
     .then(results => res.json(results))
     .catch(error => res.json(error))
 })
+
+
+// passport provides an authenticate() function, which is used as route middleware to authenticate requests
+router.post('/login', 
+// add { failureRedirect: '/login' } when that route is created
+  passport.authenticate('local'),
+  function(req, res) {
+    // add below line of code when route is created
+    // res.redirect('/');
+  });
 
 // this will be for the signup.html page when created
 router.post("/api/signup", function(req, res) {

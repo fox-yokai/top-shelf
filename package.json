@@ -20,6 +20,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.3",
     "passport": "^0.4.1",
