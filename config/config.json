@@ -18,7 +18,6 @@
     "operatorsAliases": false
   },
   "production": {
-    "user_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
+    "user_env_variable": "JAWSDB_URL"
   }
 }
