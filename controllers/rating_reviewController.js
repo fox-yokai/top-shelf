@@ -45,7 +45,7 @@ router.get("/api/rating_review/WineID/:WineId", function (req, res) {
     // return the result to the user with res.json
     db.Rating_review.findAll({
         where: {
-            wine_id: req.params.wine_id
+            WineId: req.params.WineId
         }
     }).then(function (dbRating_review) {
         res.json(dbRating_review);
@@ -78,18 +78,20 @@ router.delete("/api/rating_review/:id", function (req, res) {
 });
 
 // PUT route for updating a rating_reviews
-router.put("/api/rating_review", function (req, res) {
+router.put("/api/rating_review/:id", function (req, res) {
     // Add code here to update a post using the values in req.body, where the id is equal to
     // req.body.id and return the result to the user using res.json
-    db.Rating_review.update(req.body,
-        {
-            where: {
-                id: req.body.id
+    db.Rating_review.update(
+        { rating: req.body.rating, review: req.body.review },
+        { returning: true, where: { id: req.params.id } }
+    )
+        .then((results) => {
+            if (results.affectedRows === 0) {
+                return res.json({ statusCode: 404 })
             }
+            res.json({ statusCode: 200 })
         })
-        .then(function (dbRating_review) {
-            res.json(dbRating_review);
-        });
+        .catch(error => res.status(500).json(error))
 });
 
 module.exports = router;
