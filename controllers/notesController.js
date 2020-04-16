@@ -43,16 +43,19 @@ router.delete('/api/note/:id', (req, res) => {
 });
 
 // PUT route for updating a note
-router.put("/api/note", function (req, res) {
-  // Add code here to update a post using the values in req.body, where the id is equal to
+router.put("/api/note/:id", function (req, res, next) {
+  // Add code here to update a note using the values in req.body, where the id is equal to
   // req.body.id and return the result to the user using res.json
-  db.Note.update(req.body,
-    {
-      where: {
-        id: req.body.id
+  db.Note.update(
+    { note: req.body.note },
+    { returning: true, where: { id: req.params.id } }
+  )
+    .then((results) => {
+      if (results.affectedRows === 0) {
+        return res.json({ statusCode: 404 })
       }
+      res.json({ statusCode: 200 })
     })
-    .then(results => res.json(results))
     .catch(error => res.status(500).json(error))
 });
 
