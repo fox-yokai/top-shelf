@@ -22,23 +22,8 @@ router.post('/login',
     console.log('Login successful')
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
-    res.redirect('/');
+    res.redirect('/members');
   });
-
-// router.post('/login',
-//   passport.authenticate('local', {
-//     successRedirect: '/',
-//     failureRedirect: '/login'
-//   }));
-
-
-// add { failureRedirect: '/login' } when that route is created
-// passport.authenticate('local'),
-// function (req, res) {
-//   { failureRedirect: '/login' }
-// add below line of code when route is created
-//   res.redirect('/');
-// });
 
 // this will be for the signup.html page when created
 router.post("/api/signup", function (req, res) {
@@ -54,6 +39,21 @@ router.post("/api/signup", function (req, res) {
     .catch(function (err) {
       res.status(401).json(err);
     });
+});
+
+// Route for getting the user's email address to be used client side
+router.get("/api/user_data", function (req, res) {
+  if (!req.user) {
+    // The user is not logged in, send back an empty object
+    res.json({});
+  } else {
+    // Otherwise send back the user's email and id
+    // Sending back a password, even a hashed password, isn't a good idea
+    res.json({
+      email: req.user.email,
+      id: req.user.id
+    });
+  }
 });
 
 router.get("/logout", function (req, res) {
