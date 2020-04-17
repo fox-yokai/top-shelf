@@ -1,3 +1,7 @@
 #brand {
     color: red;
 }
+
+#add-wine-form {
+    display: none;
+}
