@@ -56,11 +56,35 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 border rounded">
-                <h2>Welcome to your Top Shelf Wine Collection <span class="member-name"></span></h2>
-            <div class="container "><button type="button" class="btn btn-secondary btn-lg btn-block show-add-wine-btn">Add to Wine Shelf</button>
+                <h2>Welcome to your Top Shelf Wine Collection <span class="member-name" id="user-name"></span></h2>
+                <div class="container "><button type="button" class="btn btn-secondary btn-lg btn-block show-add-wine-btn">Add to Wine Shelf</button>
+                </div>
+                <div id='wines'>
+                    <div class='wineList'>
+                        <div class="row">
+                            <div class="col-md-6 list-container">
+                                <ul class="list-group">
+            
+                                </ul>
+            
+                                <span>
+                                    <h4 id='wine-name'></h4>
+                                </span>
+                                <span>
+                                    <h4 id='wine-variety'></h4>
+                                </span>
+                            </div>
+                            <!-- <div class="col-md-6">
+                                <h2>Welcome to your Top Shelf Wine Collection <span class="member-name"></span></h2>
+                            </div> -->
+                        </div>
+                        <br />
+                    </div>
+                </div>
+                <!-- END OF CONTENT -->
+
             </div>
-            <!-- start of add wine form -->
-            </div>
+             <!-- start of add wine form -->
             <div class="col-md-6 col-md-offset-3 border rounded" id="add-wine-form">
                 <form class="add-wine">
                     <div class="form-row">
@@ -116,24 +140,7 @@
 
             </div>
         </div>
-        <div id='wines'>
-            wines
-            <div class="row">
-                <div class="col-12">
-                    <span>
-                        <h4 id='wine-name'></h4>
-                        wine name
-                    </span>
-                    <span>
-                        <h4 id='wine-variety'></h4>
-                        wine variety
-                    </span>
-                </div>
-            </div>
-            <br />
-        </div>
-    </div>
-    <!-- END OF CONTENT -->
+
 
     <!-- jQuery and popper CDNs -->
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"
