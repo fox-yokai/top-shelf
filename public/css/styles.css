@@ -2,6 +2,12 @@
     color: red;
 }
 
+
+#show-wine-details {
+    display: none;
+}
+
+
 #add-wine-form {
     display: none;
 }
