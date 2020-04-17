@@ -20,10 +20,12 @@ $(document).ready(function () {
           // add the attribut id="i" to apply a unique id to each li element
           $li.attr("id", i);
           //  create a span element to hold the title of the note
-          var $span1 = $("<span>").text(name);
-          var $span2 = $("<span>").text(year);
-          var $span3 = $("<span>").text(winery);
-          $li.append($span1, $span2, $span3);
+          // var $name = response[i].name;
+          var $div1 = $("<div>").append("Name:  ", response[i].name)
+          // $div1.append.($name);
+          var $div2 = $("<div>").append("Year:  ", response[i].year);
+          var $div3 = $("<div>").append("Winery:  ", response[i].winery);
+          $li.append($div1, $div2, $div3);
           $noteList.append($li);
 
         }
