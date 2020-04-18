@@ -49,7 +49,10 @@ router.get("/api/rating_review/WineID/:WineId", function (req, res) {
         }
     }).then(function (dbRating_review) {
         res.json(dbRating_review);
-    });
+    }).catch(function (err) {
+        $(".errorMessage").show();
+    })
+
 });
 
 

@@ -24,6 +24,24 @@ $(document).ready(function () {
             })
     }
 
+    function showRatingReview(wineid) {
+        var ratingReview = $(".ratingReview");
+        ratingReview.empty(); // prevents duplications appearing
+        $.get('/api/rating_review/WineID/' + wineid)
+            .then(response => {
+                // console.log(wineid)
+                // console.log(response)
+                var ratingReviewId = response[0].id
+                var rating = response[0].rating
+                var review = response[0].review
+                var ratingReviewBtn = $("<button type='button' class='btn btn-outline-secondary btn-sm noteBtn'></button>")
+                ratingReviewBtn.attr("id", ratingReviewId)
+                var ratingReviewText = `Rating: ${rating} \n` + `Review:  ${review}`
+                ratingReviewBtn.text(ratingReviewText)
+                ratingReview.append(ratingReviewBtn);
+            })
+    }
+
     function showNotes(wineid) {
         var notesList = $(".note-container .list-group");
         notesList.empty(); // prevents duplications appearing
@@ -45,8 +63,6 @@ $(document).ready(function () {
                     // notesList.append(li);
                     notesList.append(noteBtn);
                 }
-
-
             })
     }
 
@@ -56,6 +72,7 @@ $(document).ready(function () {
         var wineid = this.id
         // console.log('wineid:  ' + wineid)
         showWineDetails(wineid)
+        showRatingReview(wineid)
         showNotes(wineid)
     })
 
