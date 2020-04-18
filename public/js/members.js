@@ -11,7 +11,7 @@ $(document).ready(function () {
       .then(response => {
         for (let i = 0; i < response.length; i++) {
           const { id, name, variety, location, color, winery, year, numBottles, UserId } = response[i];
-          console.log('wine id:  ' + id)
+          // console.log('wine id:  ' + id)
           var $moreBtn = $("<button type='button' class='btn btn-info btn-sm moreBtn'>More</button>")
           var $li = $("<li class='list-group-item'>");
           $moreBtn.attr("id", id);
