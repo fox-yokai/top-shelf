@@ -12,6 +12,17 @@
     display: none;
 }
 
+
+.jumbotron-background {
+    background-image: url("/assets/img/topshelfbackground.jpg") !important;
+    background-size: cover !important;
+  }
+
+.title-color {
+    color: lightgrey;
+}
+  
 .right {
     float: right;
 }
+
