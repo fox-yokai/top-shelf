@@ -16,7 +16,7 @@ $(document).ready(function () {
             .then(response => {
                 // const { id, name, variety, location, color, winery, year, numBottles, UserId } = response;
                 // to dynamically create the button just not quite working
-                var rateBtn = $("<Button>").attr({type: "button", class: "btn btn-primary"}).attr('data-toggle', "modal").attr('data-target', '#winerating').val("Rate & Review").html("</button>");
+                var rateBtn = $("<Button>").attr({type: "button", class: "btn btn-primary"}).attr('data-toggle', "modal").attr('data-target', '#winerating').append("Rate & Review");
                 var span1 = $("<span>").append("Name:  ", response.name)
                 wineDetails.append(span1).append(rateBtn)
             })

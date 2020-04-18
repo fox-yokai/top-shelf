@@ -13,7 +13,7 @@ $(document).ready(function () {
               "rating": $("#wineRating").val(),
               "review": $("#wineReview").text(),
               // WineId set to 1 for testing
-              "WineId": "1"
+              "WineId": WineId
             }
           };
           

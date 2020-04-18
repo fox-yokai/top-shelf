@@ -61,10 +61,40 @@
                         class="btn btn-secondary btn-lg btn-block show-add-wine-btn">Add to Wine Shelf</button>
                 </div>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#winerating">
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#winerating">
                     Rate & Review
-                </button>
+                </button> -->
                 <!-- end of modal trigger -->
+
+                        <!-- Rating Modal -->
+<div class="modal fade" id="winerating" tabindex="-1" role="dialog" aria-labelledby="wineratingTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="wineModalTitle">Add your Wine Rating</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="wineReviewTextArea">Your Review</label>
+                  <textarea class="form-control" id="wineReviewText" rows="5"></textarea>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="wineRatingNum">Rating (1-100)</label>
+                  <input type="number" class="form-control" placeholder="0" id="wineRatingRtg" min="1" max="100">
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="wineReviewBtn">Save</button>
+        </div>
+      </div>
+    </div>
+</div>
 
                 <div id='wines'>
                     <div class='wineList'>
@@ -146,37 +176,6 @@
                         </div>
                 </form>
             </div>
-
-        <!-- Rating Modal -->
-<div class="modal fade" id="winerating" tabindex="-1" role="dialog" aria-labelledby="wineratingTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="wineModalTitle">Add your Wine Rating</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form>
-                <div class="form-group">
-                  <label for="wineReviewTextArea">Your Review</label>
-                  <textarea class="form-control" id="wineReviewText" rows="5"></textarea>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="wineRating">Rating (1-100)</label>
-                  <input type="number" class="form-control" placeholder="0" id="wineRating" min="1" max="100">
-                </div>
-              </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary" id="wineReviewBtn">Save</button>
-        </div>
-      </div>
-    </div>
-</div>
-
 
             <!-- jQuery and popper CDNs -->
             <script src="https://code.jquery.com/jquery-3.5.0.min.js"
