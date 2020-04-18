@@ -1,12 +1,4 @@
 $(document).ready(function () {
-    // .get("/api/user_data").then(function (data) {
-    //     $(".member-name").text(data.email);
-    //     var userid = data.id;
-    //     // console.log(data.id);
-    //     $("#user-name").attr("data-user-id", data.id);
-    // var WineId = $("#user-name").attr("data-user-id");
-    // console.log('in showDetails 3:  ' + WineId)
-    // shows the add wine panel
 
     function showWineDetails(wineid) {
         // console.log('in showWineDetails wineid = ' + wineid)
@@ -33,13 +25,33 @@ $(document).ready(function () {
             })
     }
 
+    function showNotes(wineid) {
+        var notesList = $(".note-container .note-group");
+        notesList.empty(); // prevents duplications appearing
+        $.get('/api/notes/WineId/' + wineid)
+            .then(response => {
+                // console.log(wineid)
+                console.log(response)
+                for (let i = 0; i < response.length; i++) {
+                    const { id, note, WineId } = response[i];
+                    // console.log('wine id:  ' + id)
+                    var li = $("<li class='list-group-item'>");
+                    var div1 = $("<div>").append(response[i].note)
+                    li.append(div1);
+                    notesList.append(li);
+                }
+
+
+            })
+    }
+
     $(document).on('click', '.moreBtn', function () {
         event.preventDefault();
         $("#show-wine-details").show();
         var wineid = this.id
         // console.log('wineid:  ' + wineid)
         showWineDetails(wineid)
-
+        showNotes(wineid)
     })
 
 });

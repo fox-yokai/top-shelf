@@ -23,6 +23,20 @@ router.get("/api/note/:id", function (req, res) {
     .catch(error => res.status(500).json(error))
 });
 
+// Get route for returning all notes for a specific wine
+router.get("/api/notes/WineId/:id", function (req, res) {
+  // console.log('in notesController WineId: ' + req.params.id)
+  db.Note.findAll({
+    where: {
+      WineId: req.params.id
+    }
+  }).then(function (noteList) {
+    console.log('in notesController WineId: ' + req.params.id)
+    res.json(noteList);
+  });
+});
+
+
 // POST route for saving a new note
 router.post("/api/note", function (req, res) {
   // Add sequelize code for creating a rating_review using req.body,
@@ -32,6 +46,7 @@ router.post("/api/note", function (req, res) {
     .catch(error => res.status(500).json(error))
 });
 
+// DELETE route for deleting a single note
 router.delete('/api/note/:id', (req, res) => {
   db.Note.destroy({
     where: {
