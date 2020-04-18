@@ -9,6 +9,7 @@ $(document).ready(function () {
                 // const { id, name, variety, location, color, winery, year, numBottles, UserId } = response;
                 // to dynamically create the button just not quite working
                 var rateBtn = $("<Button>").attr({ type: "button", class: "btn btn-primary btn-sm", id: "rateBtnA", value: wineid }).attr('data-toggle', "modal").attr('data-target', '#winerating').append("Rate & Review");
+                var addNotesBtn = $("<Button>").attr({ type: "button", class: "btn btn-primary btn-sm right", id: "notesBtnA", value: wineid }).attr('data-toggle', "modal").attr('data-target', '#notesModalCenter').append("Add tasting notes");
                 var span1 = $("<span>").append("Name:  ", response[0].name)
                 var span2 = $("<span class='right'>").append("Variety:  ", response[0].variety)
                 var div1 = $("<div>").append(span1, span2)
@@ -20,7 +21,7 @@ $(document).ready(function () {
                 var div3 = $("<div>").append(span1, span2)
                 var span1 = $("<span>").append("Number of bottles:  ", response[0].numBottles)
                 var div4 = $("<div>").append(span1)
-                wineDetails.append(div1, div2, div3, div4).append(rateBtn)
+                wineDetails.append(div1, div2, div3, div4).append(rateBtn).append(addNotesBtn);
             })
     }
 
@@ -47,24 +48,16 @@ $(document).ready(function () {
         notesList.empty(); // prevents duplications appearing
         $.get('/api/notes/WineId/' + wineid)
             .then(response => {
-                // console.log(wineid)
-                // console.log(response)
                 for (let i = 0; i < response.length; i++) {
-                    // const { id, note, WineId } = response[i];
-                    // console.log('wine id:  ' + id)
-                    var noteid = response[i].id
-                    var note = response[i].note
-                    var noteBtn = $("<button type='button' class='btn btn-outline-secondary btn-sm noteBtn'></button>")
+                    var noteid = response[i].id;
+                    var note = response[i].note;
+                    var noteBtn = $("<button type='button' class='btn btn-outline-secondary btn-sm noteBtn'></button>");
                     noteBtn.attr("id", noteid)
                     noteBtn.text(note)
-                    // var li = $("<li class='list-group-item'>");
-                    // var div1 = $("<div>").append(response[i].note)
-                    // li.append(div1);
-                    // notesList.append(li);
                     notesList.append(noteBtn);
                 }
             })
-    }
+    };
 
     $(document).on('click', '.moreBtn', function () {
         event.preventDefault();
@@ -74,6 +67,30 @@ $(document).ready(function () {
         showWineDetails(wineid)
         showRatingReview(wineid)
         showNotes(wineid)
-    })
+    });
+
+
+    $("#addNoteSaveBtn").on("click", function(event, wineid){
+        var settings = {
+            "url": "/api/note",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+              "Content-Type": "application/x-www-form-urlencoded",
+              "Cookie": "connect.sid=s%3AUjTf6jGQsqG-pyDj8b0ox_Uj8rG0B2Dg.6D7aYxKOBQSMv35DqVZvebjxsE6IbmZ0IFaKoKSAaW0"
+            },
+            "data": {
+              "note": $("#wineNotesTxtArea").val(),
+              "WineId": $(rateBtnA).val(),
+            }
+          };
+          
+          $.ajax(settings).done(function (response) {
+            showNotes($(rateBtnA).val());
+            return
+
+          });
+    });
+
 
 });
