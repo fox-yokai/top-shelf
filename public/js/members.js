@@ -2,7 +2,9 @@ $(document).ready(function () {
   var $wineList = $(".list-container .list-group");
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email);
-    var userid = data.id;
+
+    const userid = data.id;
+
     // console.log(data.id);
     $("#user-name").attr("data-user-id", data.id);
     $.get('/api/wines/UserID/' + userid)
