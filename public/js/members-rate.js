@@ -1,7 +1,5 @@
 $(document).ready(function () {
-  console.log('LISTENTING')
     $("#wineReviewBtn").on("click", function(event){
-        event.preventDefault();
         var settings = {
             "url": "/api/rating_review",
             "method": "POST",
@@ -10,15 +8,15 @@ $(document).ready(function () {
               "Content-Type": "application/x-www-form-urlencoded"
             },
             "data": {
-              "rating": $("#wineRating").val(),
-              "review": $("#wineReview").text(),
-              // WineId set to 1 for testing
-              "WineId": WineId
+              "rating": $("#wineRatingRtg").val(),
+              "review": $("#wineReviewText").val(),
+              "WineId": $(rateBtnA).val()
             }
           };
           
           $.ajax(settings).done(function (response) {
-            console.log(response);
+              // in the future this should just clear and close the modal
+                window.location = "/members";
           });
         });
 
