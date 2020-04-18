@@ -94,29 +94,31 @@
                 </div>
 
                 <!-- notes modal -->
-                <div class="modal fade" id="notesModalCenter" tabindex="-1" role="dialog" aria-labelledby="createNotes" aria-hidden="true">
+                <div class="modal fade" id="notesModalCenter" tabindex="-1" role="dialog" aria-labelledby="createNotes"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="createNotesModalTitle">Add your tasting notes</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="createNotesModalTitle">Add your tasting notes</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="wineNotesTxtArea" rows="5"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="addNoteSaveBtn"
+                                    data-dismiss="modal">Save changes</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                          <form>
-                            <div class="form-group">
-                                <textarea class="form-control" id="wineNotesTxtArea" rows="5"></textarea>
-                              </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary" id="addNoteSaveBtn" data-dismiss="modal">Save changes</button>
-                        </div>
-                      </div>
                     </div>
-                  </div>
+                </div>
 
 
                 <div id='wines'>
@@ -142,7 +144,18 @@
 
                     </div>
                 </div>
+                <!-- start of render rating/review -->
+                <br />
+                <h5>Rating and Review</h5>
+                <div class="col ratingReview-container">
+                    <div class="noteList" id="indent">
+                        <div class="ratingReview">
+
+                        </div>
+                    </div>
+                </div>
                 <!-- start of render notes list -->
+                <br />
                 <h5>Notes for this wine:</h5>
                 <div class="col notes-container">
                     <div id='notes'>
@@ -157,76 +170,79 @@
                     </div>
                 </div>
             </div>
-            <!-- start of add wine form -->
-            <div class="col-md-6 col-md-offset-3 border rounded" id="add-wine-form">
-                <form class="add-wine">
-                    <div class="form-row">
-                        <div class="form-group col-md-6 wine-name">
-                            <label for="wine-name">Name</label>
-                            <input type="text" class="form-control" id="wine-name" placeholder="Name">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="wine-variety">Variety</label>
-                            <select id="wine-variety" class="form-control">
-                                <option value="pinot-noir">Pinot Noir</option>
-                                <option value="chardonnay">Chardonnay</option>
-                                <option value="cabernet-sauvignon">Cabernet Sauvignon</option>
-                                <option value="red-blend">Red Blend</option>
-                                <option value="bordeaux-style-red-blend">Bordeaux-style Red Blend</option>
-                                <option value="sauvignon-blanc">Sauvignon Blanc</option>
-                                <option value="riesling">Riesling</option>
-                                <option value="sparkling">Sparkling</option>
-                                <option value="white-blend">White Blend</option>
-                                <option value="merlot">Merlot</option>
-                                <option value="sangiovese">Sangiovese</option>
-                                <option value="zinfandel">Zinfandel</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="wine-location">Location</label>
-                            <input type="text" class="form-control" id="wine-location">
-                        </div>
-                        <div class="form-row">
-                            <div class="col">
-                                <label for="wine-color">Color</label>
-                                <input type="text" class="form-control" placeholder="Red" id="wine-color">
-                            </div>
-                            <div class="col">
-                                <label for="wine-year">Vintage</label>
-                                <input type="number" class="form-control" placeholder="2000" id="wine-year" max="2020"
-                                    min="1700">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col">
-                                <label for="winery">Winery</label>
-                                <input type="text" class="form-control winery" placeholder="Heitz" id="winery">
-                            </div>
-                            <div class="col">
-                                <label for="numBottles">Number of Bottles</label>
-                                <input type="number" class="form-control" placeholder="0" id="numBottles" max="20">
-                            </div>
-                        </div>
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary add-wine">Add to shelf</button>
-                        </div>
-                </form>
-            </div>
+        </div>
+    </div>
+    </div>
+    <!-- start of add wine form -->
+    <div class="col-md-6 col-md-offset-3 border rounded" id="add-wine-form">
+        <form class="add-wine">
+            <div class="form-row">
+                <div class="form-group col-md-6 wine-name">
+                    <label for="wine-name">Name</label>
+                    <input type="text" class="form-control" id="wine-name" placeholder="Name">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="wine-variety">Variety</label>
+                    <select id="wine-variety" class="form-control">
+                        <option value="pinot-noir">Pinot Noir</option>
+                        <option value="chardonnay">Chardonnay</option>
+                        <option value="cabernet-sauvignon">Cabernet Sauvignon</option>
+                        <option value="red-blend">Red Blend</option>
+                        <option value="bordeaux-style-red-blend">Bordeaux-style Red Blend</option>
+                        <option value="sauvignon-blanc">Sauvignon Blanc</option>
+                        <option value="riesling">Riesling</option>
+                        <option value="sparkling">Sparkling</option>
+                        <option value="white-blend">White Blend</option>
+                        <option value="merlot">Merlot</option>
+                        <option value="sangiovese">Sangiovese</option>
+                        <option value="zinfandel">Zinfandel</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="wine-location">Location</label>
+                    <input type="text" class="form-control" id="wine-location">
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="wine-color">Color</label>
+                        <input type="text" class="form-control" placeholder="Red" id="wine-color">
+                    </div>
+                    <div class="col">
+                        <label for="wine-year">Vintage</label>
+                        <input type="number" class="form-control" placeholder="2000" id="wine-year" max="2020"
+                            min="1700">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="winery">Winery</label>
+                        <input type="text" class="form-control winery" placeholder="Heitz" id="winery">
+                    </div>
+                    <div class="col">
+                        <label for="numBottles">Number of Bottles</label>
+                        <input type="number" class="form-control" placeholder="0" id="numBottles" max="20">
+                    </div>
+                </div>
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary add-wine">Add to shelf</button>
+                </div>
+        </form>
+    </div>
 
-            <!-- jQuery and popper CDNs -->
-            <script src="https://code.jquery.com/jquery-3.5.0.min.js"
-                integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-                crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-                crossorigin="anonymous"></script>
+    <!-- jQuery and popper CDNs -->
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 
-            <script type="text/javascript" src="js/members.js"></script>
-            <script type="text/javascript" src="js/members-addwine.js"></script>
-            <script type="text/javascript" src="js/members-showDetails.js"></script>
-            <script type="text/javascript" src="js/members-rate.js"></script>
+    <script type="text/javascript" src="js/members.js"></script>
+    <script type="text/javascript" src="js/members-addwine.js"></script>
+    <script type="text/javascript" src="js/members-showDetails.js"></script>
+    <script type="text/javascript" src="js/members-rate.js"></script>
 
 
 </body>

@@ -30,3 +30,12 @@
     color: black;
 }
 
+#indent {
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+.errorMessage {
+    display: none;
+}
+
