@@ -2,9 +2,7 @@ $(document).ready(function () {
   console.log('LISTENTING')
     $("#wineReviewBtn").on("click", function(event){
         event.preventDefault();
-        console.log("Save was clicked on");
         var settings = {
-            // change before pushing to master
             "url": "/api/rating_review",
             "method": "POST",
             "timeout": 0,
