@@ -11,3 +11,7 @@
 #add-wine-form {
     display: none;
 }
+
+.right {
+    float: right;
+}
