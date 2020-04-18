@@ -8,8 +8,7 @@ $(document).ready(function () {
             .then(response => {
                 // const { id, name, variety, location, color, winery, year, numBottles, UserId } = response;
                 // to dynamically create the button just not quite working
-                console.log("wine details ID:", wineid)
-                var rateBtn = $("<Button>").attr({ type: "button", class: "btn btn-primary btn-sm", id: "rateBtnA",value: wineid }).attr('data-toggle', "modal").attr('data-target', '#winerating').append("Rate & Review");
+                var rateBtn = $("<Button>").attr({ type: "button", class: "btn btn-primary btn-sm", id: "rateBtnA", value: wineid }).attr('data-toggle', "modal").attr('data-target', '#winerating').append("Rate & Review");
                 var span1 = $("<span>").append("Name:  ", response[0].name)
                 var span2 = $("<span class='right'>").append("Variety:  ", response[0].variety)
                 var div1 = $("<div>").append(span1, span2)
@@ -26,19 +25,25 @@ $(document).ready(function () {
     }
 
     function showNotes(wineid) {
-        var notesList = $(".note-container .note-group");
+        var notesList = $(".note-container .list-group");
         notesList.empty(); // prevents duplications appearing
         $.get('/api/notes/WineId/' + wineid)
             .then(response => {
                 // console.log(wineid)
-                console.log(response)
+                // console.log(response)
                 for (let i = 0; i < response.length; i++) {
-                    const { id, note, WineId } = response[i];
+                    // const { id, note, WineId } = response[i];
                     // console.log('wine id:  ' + id)
-                    var li = $("<li class='list-group-item'>");
-                    var div1 = $("<div>").append(response[i].note)
-                    li.append(div1);
-                    notesList.append(li);
+                    var noteid = response[i].id
+                    var note = response[i].note
+                    var noteBtn = $("<button type='button' class='btn btn-outline-secondary btn-sm noteBtn'></button>")
+                    noteBtn.attr("id", noteid)
+                    noteBtn.text(note)
+                    // var li = $("<li class='list-group-item'>");
+                    // var div1 = $("<div>").append(response[i].note)
+                    // li.append(div1);
+                    // notesList.append(li);
+                    notesList.append(noteBtn);
                 }
 
 
