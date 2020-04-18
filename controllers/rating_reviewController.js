@@ -92,7 +92,7 @@ router.put("/api/rating_review/:id", function (req, res) {
             if (results.affectedRows === 0) {
                 return res.json({ statusCode: 404 })
             }
-            res.json({ statusCode: 200 })
+            res.json(results)
         })
         .catch(error => res.status(500).json(error))
 });

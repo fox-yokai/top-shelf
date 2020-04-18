@@ -37,7 +37,8 @@ $(document).ready(function () {
                 var review = response[0].review
                 var ratingReviewBtn = $("<button type='button' class='btn btn-outline-secondary btn-sm noteBtn'></button>")
                 ratingReviewBtn.attr("id", ratingReviewId)
-                var ratingReviewText = `Rating: ${rating} \n` + `Review:  ${review}`
+                var ratingReviewText = "Rating: " + rating + "   Review:  " + review
+                // console.log(ratingReviewText)
                 ratingReviewBtn.text(ratingReviewText)
                 ratingReview.append(ratingReviewBtn);
             })
@@ -70,26 +71,26 @@ $(document).ready(function () {
     });
 
 
-    $("#addNoteSaveBtn").on("click", function(event, wineid){
+    $("#addNoteSaveBtn").on("click", function (event, wineid) {
         var settings = {
             "url": "/api/note",
             "method": "POST",
             "timeout": 0,
             "headers": {
-              "Content-Type": "application/x-www-form-urlencoded",
-              "Cookie": "connect.sid=s%3AUjTf6jGQsqG-pyDj8b0ox_Uj8rG0B2Dg.6D7aYxKOBQSMv35DqVZvebjxsE6IbmZ0IFaKoKSAaW0"
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Cookie": "connect.sid=s%3AUjTf6jGQsqG-pyDj8b0ox_Uj8rG0B2Dg.6D7aYxKOBQSMv35DqVZvebjxsE6IbmZ0IFaKoKSAaW0"
             },
             "data": {
-              "note": $("#wineNotesTxtArea").val(),
-              "WineId": $(rateBtnA).val(),
+                "note": $("#wineNotesTxtArea").val(),
+                "WineId": $(rateBtnA).val(),
             }
-          };
-          
-          $.ajax(settings).done(function (response) {
+        };
+
+        $.ajax(settings).done(function (response) {
             showNotes($(rateBtnA).val());
             return
 
-          });
+        });
     });
 
 
