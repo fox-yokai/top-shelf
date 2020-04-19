@@ -49,7 +49,10 @@ router.get("/api/rating_review/WineID/:WineId", function (req, res) {
         }
     }).then(function (dbRating_review) {
         res.json(dbRating_review);
-    });
+    }).catch(function (err) {
+        $(".errorMessage").show();
+    })
+
 });
 
 
@@ -89,7 +92,7 @@ router.put("/api/rating_review/:id", function (req, res) {
             if (results.affectedRows === 0) {
                 return res.json({ statusCode: 404 })
             }
-            res.json({ statusCode: 200 })
+            res.json(results)
         })
         .catch(error => res.status(500).json(error))
 });
