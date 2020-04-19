@@ -1,16 +1,5 @@
 $(document).ready(function () {
 
-//   // variables for add wine function
-//   var wineName = $("input#wine-name");
-//   var wineVariety = $("select#wine-variety");
-//   var wineLocation = $("input#wine-location");
-//   var wineColor = $("input#wine-color");
-//   var wineVintage = $("input#wine-year");
-//   var winery = $("input#winery");
-//   var numBottles = $("input#numBottles");
-//   var UserId = $("#user-name").attr("data-user-id");
-//   console.log(UserId);
-
    // button event to add new wine
    $("form.add-wine").on("submit", function(event){
     event.preventDefault();
