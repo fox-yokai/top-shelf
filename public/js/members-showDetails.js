@@ -104,6 +104,30 @@ $(document).ready(function () {
         event.preventDefault();
         var rateReviewId = this.id
         reviseRatingReview(rateReviewId)
+        // saves the rating
+        $("#wineReviewBtn").on("click", function (event) {
+            var settings = {
+                "url": "/api/rating_review",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                "data": {
+                    "rating": $("#wineRatingRtg").val(),
+                    "review": $("#wineReviewText").val(),
+                    "WineId": $(rateBtnA).val()
+                }
+            };
+
+            $.ajax(settings).done(function (response) {
+                showWineDetails($(rateBtnA).val());
+                showNotes($(rateBtnA).val());
+                return
+            });
+        });
+
+
 
     });
 });
