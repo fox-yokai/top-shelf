@@ -30,3 +30,12 @@
     color: black;
 }
 
+.wood-background {
+    background-image: url("/assets/img/14865-tiny-1.jpg") !important;
+    background-size: cover !important;
+}
+
+body {
+    background: rgb(83,60,12);
+    background: linear-gradient(90deg, rgba(83,60,12,1) 0%, rgba(163,104,19,0.9781428062678063) 94%);
+}
