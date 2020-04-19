@@ -32,16 +32,14 @@ $(document).ready(function () {
         $.get('/api/rating_review/WineID/' + wineid)
             .then(response => {
                 // console.log(wineid)
-                // console.log(response)
-                var ratingReviewId = response[0].id
-                var rating = response[0].rating
-                var review = response[0].review
-                var ratingReviewBtn = $("<button type='button' class='btn btn-outline-secondary btn-sm noteBtn'></button>")
-                ratingReviewBtn.attr("id", ratingReviewId)
-                var ratingReviewText = "Rating: " + rating + "   Review:  " + review
-                // console.log(ratingReviewText)
-                ratingReviewBtn.text(ratingReviewText)
-                ratingReview.append(ratingReviewBtn);
+                console.log(response)
+                // var ratingReviewId = response[0].id
+                // console.log("rrid:  " + ratingReviewId)
+                ratingReview.attr("id", response[0].id)
+                var div1 = $("<div>").append("Rating:  ", response[0].rating)
+                var div2 = $("<div>").append("Review:  ", response[0].review)
+                var hr = $("<hr>")
+                ratingReview.append(div1, div2, hr);
             })
     }
 
@@ -89,6 +87,7 @@ $(document).ready(function () {
 
     function reviseRatingReview(ratingReviewId) {
         console.log('in reviseRatingReview()')
+        console.log(ratingReviewId)
     }
 
     $(document).on('click', '.moreBtn', function () {
@@ -104,7 +103,6 @@ $(document).ready(function () {
     $(document).on('click', '.ratingReview', function () {
         event.preventDefault();
         var rateReviewId = this.id
-        console.log('noteid:  ' + rateReviewId)
         reviseRatingReview(rateReviewId)
 
     });
