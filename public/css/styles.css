@@ -2,8 +2,25 @@
     color: red;
 }
 
+.members-title {
+    margin-bottom: 2%;
+}
+
+.list-group-item {
+    border: none;
+    padding: 0;
+}
 
 #show-wine-details {
+    display: none;
+}
+
+
+#show-rating-review {
+    display: none;
+}
+
+#show-notes {
     display: none;
 }
 

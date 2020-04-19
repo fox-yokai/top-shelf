@@ -54,12 +54,17 @@
 
     <!-- START OF CONTENT -->
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3 border rounded">
+        <div class="row members-title">
+            <div class="col title-container text-center">
                 <h2>Welcome to your Top Shelf Wine Collection <span class="member-name" id="user-name"></span></h2>
-                <div class="container "><button type="button"
-                        class="btn btn-secondary btn-lg btn-block show-add-wine-btn">Add to Wine Shelf</button>
+                <div class="container "><button type="button" class="btn btn-secondary btn-lg show-add-wine-btn">Add to
+                        Wine
+                        Shelf</button>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 border rounded">
 
                 <!-- Rating Modal -->
                 <div class="modal fade" id="winerating" tabindex="-1" role="dialog" aria-labelledby="wineratingTitle"
@@ -128,17 +133,17 @@
                             <ul class="list-group" data-list="wineList">
 
                             </ul>
+                            <br />
                         </div>
-                        <br />
                     </div>
-                </div>
-                <!-- END OF CONTENT -->
+                    <!-- END OF CONTENT -->
 
+                </div>
             </div>
 
-            <!-- start of show wine details -->
-            <div class="col-md-6 col-md-offset-3 border rounded" id="show-wine-details">
-                <h4>Details for this wine</h4>
+            <div class="col-md-6 border rounded">
+                <!-- start of show wine details -->
+                <h4 id="show-wine-details">Details for this wine</h4>
                 <div class="col wine-container">
                     <div class="wineDetails">
 
@@ -146,7 +151,7 @@
                 </div>
                 <!-- start of render rating/review -->
                 <br />
-                <h5>Rating and Review</h5>
+                <h5 id="show-rating-review">Rating and Review</h5>
                 <div class="col ratingReview-container">
                     <div class="noteList" id="indent">
                         <div class="ratingReview">
@@ -156,7 +161,7 @@
                 </div>
                 <!-- start of render notes list -->
                 <br />
-                <h5>Notes for this wine:</h5>
+                <h5 id="show-notes">Notes for this wine:</h5>
                 <div class="col notes-container">
                     <div id='notes'>
                         <div class='noteList'>
