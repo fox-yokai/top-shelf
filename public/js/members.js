@@ -19,7 +19,8 @@ $(document).ready(function () {
           var $div2 = $("<div>").append("Year:  ", response[i].year);
           var $div3 = $("<div>").append("Winery:  ", response[i].winery);
           var $div4 = $("<div>").append($moreBtn)
-          $li.append($div1, $div2, $div3, $div4);
+          var hr = $("<hr>")
+          $li.append($div1, $div2, $div3, $div4, hr);
           $wineList.append($li);
         }
       })
