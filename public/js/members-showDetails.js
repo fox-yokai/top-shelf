@@ -100,6 +100,11 @@ $(document).ready(function () {
         showNotes(wineid)
     });
 
+    $(".closeBtn").on("click", function() {
+        event.preventDefault();
+        $("#show-wine-details").hide();
+    });
+
     $(document).on('click', '.ratingReview', function () {
         event.preventDefault();
         var rateReviewId = this.id
