@@ -17,6 +17,10 @@
     padding: 0;
 }
 
+#add-wine-form {
+    display: none;
+}
+
 #show-wine-details {
     display: none;
 }
@@ -29,12 +33,6 @@
 #show-notes {
     display: none;
 }
-
-
-#add-wine-form {
-    display: none;
-}
-
 
 .jumbotron-background {
     background-image: url("/assets/img/topshelfbackground.jpg") !important;
@@ -61,13 +59,7 @@
 .brown-gradient {
     background: rgb(83,60,12);
     background: linear-gradient(90deg, rgba(83,60,12,1) 0%, rgba(163,104,19,0.9781428062678063) 94%);
-}
-#indent {
-    margin-left: 14px;
-    margin-right: 14px;
+    color: white;
 }
 
-.errorMessage {
-    display: none;
-}
 

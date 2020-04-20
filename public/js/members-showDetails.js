@@ -1,6 +1,34 @@
 $(document).ready(function () {
 
+    function showWineList(userid) {
+        // console.log('in showWineList  ' + userid)
+        var wineList = $(".list-container .list-group");
+        wineList.empty();
+        var wineid = 0;
+        $.get('/api/wines/UserID/' + userid)
+            .then(response => {
+                for (let i = 0; i < response.length; i++) {
+                    const { id, name, variety, location, color, winery, year, numBottles, UserId } = response[i];
+                    console.log('wine id:  ' + id)
+                    wineid = id;
+                    var $moreBtn = $("<button type='button' class='btn btn-info btn-sm moreBtn'>More</button>")
+                    var $li = $("<li class='list-group-item'>");
+                    $moreBtn.attr("id", id);
+                    var $div1 = $("<div>").append("Name:  ", response[i].name)
+                    var $div2 = $("<div>").append("Year:  ", response[i].year);
+                    var $div3 = $("<div>").append("Winery:  ", response[i].winery);
+                    var $div4 = $("<div>").append($moreBtn)
+                    var hr = $("<hr>")
+                    $li.append($div1, $div2, $div3, $div4, hr);
+                    wineList.append($li);
+                }
+                showWineDetails(wineid)
+
+            })
+    }
+
     function showWineDetails(wineid) {
+        $("#show-wine-details").show();
         // console.log('in showWineDetails wineid = ' + wineid)
         var wineDetails = $(".wine-container .wineDetails");
         wineDetails.empty(); // prevents duplications appearing
@@ -37,7 +65,6 @@ $(document).ready(function () {
                 // var ratingReviewId = response[0].id
                 // console.log("rrid:  " + ratingReviewId)
                 if (!response[0]) {
-                    console.log('in hide')
                     $("#show-rating-review").hide();
                 } else {
                     ratingReview.attr("id", response[0].id)
@@ -119,7 +146,7 @@ $(document).ready(function () {
 
     $(document).on('click', '.moreBtn', function () {
         event.preventDefault();
-        $("#show-wine-details").show();
+        // $("#show-wine-details").show();
         var wineid = this.id
         // console.log('wineid:  ' + wineid)
         showWineDetails(wineid)
@@ -144,31 +171,63 @@ $(document).ready(function () {
         addRatingReview(rating, review, wineid)
     });
 
-    // $("#wineReviewBtn").on("click", function (event) {
-    //     var wineid = $(rateBtnA).val()
-    //     console.log('in addRR wineid= ' + wineid)
-    //     event.preventDefault();
-    //     var settings = {
-    //         "url": "/api/rating_review",
-    //         "method": "POST",
-    //         "timeout": 0,
-    //         "headers": {
-    //             "Content-Type": "application/x-www-form-urlencoded"
-    //         },
-    //         "data": {
-    //             "rating": $("#wineRatingRtg").val(),
-    //             "review": $("#wineReviewText").val(),
-    //             "WineId": $(rateBtnA).val(),
-    //         }
-    //     };
+    // button event to add new wine
+    $(document).on('click', '#addWineSaveBtn', function (event) {
+        event.preventDefault();
+        console.log('in addwine EL')
+        var wineName = $("input#wine-name");
+        var wineVariety = $("select#wine-variety");
+        var wineLocation = $("input#wine-location");
+        var wineColor = $("input#wine-color");
+        var wineVintage = $("input#wine-year");
+        var winery = $("input#winery");
+        var numBottles = $("input#numBottles");
+        var UserId = $("#user-name").attr("data-user-id");
+        console.log(UserId);
 
-    //     $.ajax(settings).done(function (response) {
-    //         console.log("in click:  " + wineid)
-    //         showWineDetails($('#rateBtnA').val());
-    //         showNotes($('#rateBtnA').val());
-    //         showRatingReview($('#rateBtnA').val());
-    //         return
-    //     });
-    // });
+        var wineData = {
+            name: wineName.val(),
+            variety: wineVariety.children("option").filter(":selected").text(),
+            location: wineLocation.val(),
+            color: wineColor.val(),
+            winery: winery.val(),
+            year: wineVintage.val(),
+            numBottles: numBottles.val(),
+            UserId: UserId
+
+        };
+        console.log(wineData)
+        addWine(wineData.name, wineData.variety, wineData.location, wineData.color, wineData.winery, wineData.year, wineData.numBottles, wineData.UserId);
+
+
+    });
+
+    function addWine(name, variety, location, color, winery, year, numBottles, UserId) {
+        console.log("adding wine..." + UserId)
+
+        $.post("/api/wine", {
+            name: name,
+            variety: variety,
+            location: location,
+            color: color,
+            winery: winery,
+            year: year,
+            numBottles: numBottles,
+            UserId: UserId
+        })
+            .then(function () {
+                console.log(UserId)
+                showWineList(UserId)
+
+                // showWineDetails(wineid)
+                // showNotes(wineid)
+                // showRatingReview(wineid)
+            })
+        // .catch(function (err) {
+        //   throw err;
+        // });
+
+    };
+
 
 });
