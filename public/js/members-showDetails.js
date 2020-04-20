@@ -27,6 +27,7 @@ $(document).ready(function () {
 
     function showRatingReview(wineid) {
         $("#show-rating-review").show();
+        // console.log('in showRR:  ' + wineid)
         var ratingReview = $(".ratingReview");
         ratingReview.empty(); // prevents duplications appearing
         $.get('/api/rating_review/WineID/' + wineid)
@@ -35,11 +36,16 @@ $(document).ready(function () {
                 console.log(response)
                 // var ratingReviewId = response[0].id
                 // console.log("rrid:  " + ratingReviewId)
-                ratingReview.attr("id", response[0].id)
-                var div1 = $("<div>").append("Rating:  ", response[0].rating)
-                var div2 = $("<div>").append("Review:  ", response[0].review)
-                var hr = $("<hr>")
-                ratingReview.append(div1, div2, hr);
+                if (!response[0]) {
+                    console.log('in hide')
+                    $("#show-rating-review").hide();
+                } else {
+                    ratingReview.attr("id", response[0].id)
+                    var div1 = $("<div>").append("Rating:  ", response[0].rating)
+                    var div2 = $("<div>").append("Review:  ", response[0].review)
+                    var hr = $("<hr>")
+                    ratingReview.append(div1, div2, hr);
+                }
             })
     }
 
@@ -49,6 +55,9 @@ $(document).ready(function () {
         notesList.empty(); // prevents duplications appearing
         $.get('/api/notes/WineId/' + wineid)
             .then(response => {
+                if (!response[0]) {
+                    $("#show-notes").hide();
+                }
                 for (let i = 0; i < response.length; i++) {
                     var noteid = response[i].id;
                     var note = response[i].note;
@@ -63,7 +72,9 @@ $(document).ready(function () {
 
 
 
-    $("#addNoteSaveBtn").on("click", function (event, wineid) {
+    $("#addNoteSaveBtn").on("click", function (event) {
+        var wineid = $(rateBtnA).val()
+        console.log('in addnote wineid= ' + wineid)
         var settings = {
             "url": "/api/note",
             "method": "POST",
@@ -85,9 +96,25 @@ $(document).ready(function () {
         });
     });
 
-    function reviseRatingReview(ratingReviewId) {
-        console.log('in reviseRatingReview()')
-        console.log(ratingReviewId)
+    function addRatingReview(rating, review, wineid) {
+        console.log('in addRatingReview()')
+        console.log(wineid + "  " + rating + "  " + review)
+        // var ratingReview = $(".ratingReview");
+        // ratingReview.empty();
+        $.post("/api/rating_review", {
+            rating: rating,
+            review: review,
+            WineId: wineid
+        })
+            .then(function () {
+                showWineDetails(wineid)
+                showNotes(wineid)
+                showRatingReview(wineid)
+            })
+        // .catch(function (err) {
+        //     throw err;
+        // });
+
     }
 
     $(document).on('click', '.moreBtn', function () {
@@ -96,43 +123,52 @@ $(document).ready(function () {
         var wineid = this.id
         // console.log('wineid:  ' + wineid)
         showWineDetails(wineid)
-        showRatingReview(wineid)
         showNotes(wineid)
+        showRatingReview(wineid)
+
     });
 
-    $(".closeBtn").on("click", function() {
+    $(".closeBtn").on("click", function () {
         event.preventDefault();
         $("#show-wine-details").hide();
     });
 
-    $(document).on('click', '.ratingReview', function () {
+
+    $("#wineReviewBtn").on("click", function (event) {
         event.preventDefault();
-        var rateReviewId = this.id
-        reviseRatingReview(rateReviewId)
-        // saves the rating
-        $("#wineReviewBtn").on("click", function (event) {
-            var settings = {
-                "url": "/api/rating_review",
-                "method": "POST",
-                "timeout": 0,
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                "data": {
-                    "rating": $("#wineRatingRtg").val(),
-                    "review": $("#wineReviewText").val(),
-                    "WineId": $(rateBtnA).val()
-                }
-            };
-
-            $.ajax(settings).done(function (response) {
-                showWineDetails($(rateBtnA).val());
-                showNotes($(rateBtnA).val());
-                return
-            });
-        });
-
-
-
+        // var wineid = this.id
+        var wineid = $(rateBtnA).val()
+        var rating = $("#wineRatingRtg").val()
+        var review = $("#wineReviewText").val()
+        console.log('in addRR wineid= ' + wineid + "  rating: " + rating + " review: " + review)
+        addRatingReview(rating, review, wineid)
     });
+
+    // $("#wineReviewBtn").on("click", function (event) {
+    //     var wineid = $(rateBtnA).val()
+    //     console.log('in addRR wineid= ' + wineid)
+    //     event.preventDefault();
+    //     var settings = {
+    //         "url": "/api/rating_review",
+    //         "method": "POST",
+    //         "timeout": 0,
+    //         "headers": {
+    //             "Content-Type": "application/x-www-form-urlencoded"
+    //         },
+    //         "data": {
+    //             "rating": $("#wineRatingRtg").val(),
+    //             "review": $("#wineReviewText").val(),
+    //             "WineId": $(rateBtnA).val(),
+    //         }
+    //     };
+
+    //     $.ajax(settings).done(function (response) {
+    //         console.log("in click:  " + wineid)
+    //         showWineDetails($('#rateBtnA').val());
+    //         showNotes($('#rateBtnA').val());
+    //         showRatingReview($('#rateBtnA').val());
+    //         return
+    //     });
+    // });
+
 });
