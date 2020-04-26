@@ -15,7 +15,7 @@ const FILES_TO_CACHE = [
   '/js/signup.js',
   '/assets/img/14865-tiny-1.jpg',
   '/assets/img/topshelfbackground.jpg',
-  '/asests/img/icons/TS-72x72.png',
+  // '/asests/img/icons/TS-72x72.png',
   '/assets/img/icons/TS-96x96.png',
   '/assets/img/icons/TS-128x128.png',
   '/assets/img/icons/TS-144x144.png',
