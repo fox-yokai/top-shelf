@@ -4,31 +4,31 @@
     "description": "A simple website to track your wine shelf.",
     "display": "standalone",
     "background_color": "white",
-    "start_url": "/login",
+    "start_url": ".",
     "lang": "en-US",
     "icons": [
         {
-            "src": "assets/images/icons/TS-72x72.png",
+            "src": "assets/img/icons/TS-72x72.png",
             "sizes": "72x72",
             "type": "image/png"
         },
         {
-            "src": "assets/images/icons/TS-96x96.png",
+            "src": "assets/img/icons/TS-96x96.png",
             "sizes": "96x96",
             "type": "image/png"
         },
         {
-            "src": "assets/images/icons/TS-128x128.png",
+            "src": "assets/img/icons/TS-128x128.png",
             "sizes": "128x128",
             "type": "image/png"
         },
         {
-            "src": "assets/images/icons/TS-144x144.png",
+            "src": "assets/img/icons/TS-144x144.png",
             "sizes": "144x144",
             "type": "image/png"
         },
         {
-            "src": "assets/images/icons/TS-384x384.png",
+            "src": "assets/img/icons/TS-384x384.png",
             "sizes": "384x384",
             "type": "image/png"
         }
