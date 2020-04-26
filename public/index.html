@@ -17,6 +17,9 @@
     <!-- Our own CSS stylesheet -->
     <link rel="stylesheet" href="css/styles.css" media="screen" />
 
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.webmanifest">
+
 </head>
 
 <body class="brown-gradient">
@@ -66,6 +69,15 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="dist/jquery.floating-social-share.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./service-worker.js").then(reg => {
+                    console.log("We found your service worker file!", reg);
+                });
+            });
+        }
+    </script>
 
 </body>
 
