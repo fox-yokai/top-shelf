@@ -1,4 +1,5 @@
 const FILES_TO_CACHE = [
+
   '/',
   '/index.html',
   '/login.html',
@@ -22,6 +23,7 @@ const FILES_TO_CACHE = [
   '/assets/img/icons/TS-384x384.png',
   '/dist/jquery.floating-social-share.min.css',
   '/dist/jquery.floating-social-share.min.js',
+
 ];
 
 const CACHE_NAME = "static-cache-v1";
