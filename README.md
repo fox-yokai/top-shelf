@@ -1,6 +1,7 @@
 # Top Shelf
-## Purpose
-In Top Shelf you can can keep an inventory of your bottles, keep tasting notes, review, and rate your wine.
+## Overview
+Top Shelf is a full-stack app that lets a user create an account and then track an inventory of bottles, keep tasting notes, and rate their wine.
+
 ## How to use
 To use the website you will need to create a account
 - click on the sign up link in the upper-right corner
